@@ -19,21 +19,29 @@ echo install linvdpau-dev...
 #
 sudo apt-get install git libvdpau-dev gawk pkg-config
 echo Get Files Start!
-echo use git to clone the Libvdpau_sunxi
+echo Getting the Libvdpau_sunxi
 #
 #git clone https://github.com/linux-sunxi/libvdpau-sunxi.git
 echo gitting library...
 echo libcedrus provides low-level access to the video engine of Allwinner sunxi SoCs.
 #
+if [ ! -f "vdpau_Allwinner.zip" ]; then  
+    echo "Error: file : vdpau_Allwinner.zip not found! "  
+else  
+    echo unpacking vdpau_Allwinner.zip
+	unzip -o vdpau_Allwinner.zip >>/dev/null
+fi
 #git clone https://github.com/linux-sunxi/libcedrus.git
 #wget https://www.cairographics.org/releases/pixman-0.34.0.tar.gz
 if [ ! -d "libvdpau-sunxi" ]; then  
-    echo "the libvdpau-sunxi Not Found!"  
+    echo "the libvdpau-sunxi Not Found!"
+    exit 1
 else  
     echo "Cheak LibVdpau_SUNXI......Done..."  
 fi
 if [ ! -d "libcedrus" ]; then  
     echo "File--LibCedurs not found!"  
+    exit 1
 else  
     echo "Cheak libcedurs........Done...."  
 fi  
